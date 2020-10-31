@@ -85,12 +85,12 @@ class PresOrder(Resource):
 
 class LandmarkAdd(Resource):
     parser = reqparse.RequestParser()
-    parser.add_argument('landmarkName',
+    parser.add_argument('landmark_name',
                         type=str,
                         required=True,
                         help="This field cannot be left blank.")
 
-    parser.add_argument('landmarkType',
+    parser.add_argument('landmark_type',
                         type=str,
                         required=True,
                         help="This field cannot be left blank.")
@@ -118,20 +118,20 @@ class LandmarkAdd(Resource):
         '''
 
         print(data)
-        connection = psycopg2.connect(user="postgres",
-                                      password="anuj@150100",
-                                      host="127.0.0.1",
-                                      port="5432",
-                                      database="MapifyDb")
+        # connection = psycopg2.connect(user="postgres",
+        #                               password="anuj@150100",
+        #                               host="127.0.0.1",
+        #                               port="5432",
+        #                               database="MapifyDb")
+        #
+        # cursor = connection.cursor()
+        #
+        #
+        # postgres_insert_query = """ INSERT INTO Landmark(Landmark_name, Landmark_type, Landmark_location) VALUES (%s,%s, Point(%s, %s))"""
+        # record_to_insert = (data["landmarkName"], data["landmarkType"],[data["latitude"] ,data["longitude"] ])
 
-        cursor = connection.cursor()
-
-
-        postgres_insert_query = """ INSERT INTO Landmark(Landmark_name, Landmark_type, Landmark_location) VALUES (%s,%s, Point(%s, %s))"""
-        record_to_insert = (data["landmarkName"], data["landmarkType"],[data["latitude"] ,data["longitude"] ])
-
-        cursor.execute(postgres_insert_query, record_to_insert)
-        connection.commit()
+        # cursor.execute(postgres_insert_query, record_to_insert)
+        # connection.commit()
 
 
         return True, 200

@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required
 
 from security import authenticate, identity
 from user import LandmarkAdd
-
+from flask_cors import CORS
 
 
 
@@ -15,6 +15,7 @@ from datetime import timedelta
 
 app = Flask(__name__)
 app.secret_key = 'safety'
+CORS(app)
 api = Api(app)
 
 app.config['JWT_AUTH_URL_RULE'] = '/login'
@@ -26,7 +27,7 @@ jwt = JWT(app, authenticate, identity)  # authentication
 
 
 
-api.add_resource(LandmarkAdd, '/landmark_add')
+api.add_resource(LandmarkAdd, '/storeLandmark')
 
 
 
